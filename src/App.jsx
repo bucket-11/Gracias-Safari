@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import Phaser from "phaser";
+import React, { useState, useRef, useEffect } from “react”;
+import Phaser from “phaser”;
 
 export default function App() {
 const containerRef = useRef(null);   // ✅ where Phaser will mount
@@ -18,9 +18,9 @@ type: Phaser.AUTO,
 width: window.innerWidth,
 height: window.innerHeight,
 parent: containerRef.current,      // ✅ mount here
-backgroundColor: "#87ceeb",
+backgroundColor: “#87ceeb”,
 physics: {
-default: "arcade",
+default: “arcade”,
 arcade: { gravity: { y: 0 }, debug: false },
 },
 scene: [Checkpoint1Scene, Checkpoint2Scene, Checkpoint3Scene, Checkpoint4Scene],
@@ -36,7 +36,7 @@ gameRef.current = new Phaser.Game(config);
   */
   class Checkpoint1Scene extends Phaser.Scene {
   constructor() {
-  super("Checkpoint1Scene");
+  super(“Checkpoint1Scene”);
   }
 
 ```
