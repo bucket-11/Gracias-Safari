@@ -1,37 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Gracias Africa</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
-
-    <!-- Phaser CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
-
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        background: #000;
-        height: 100%;
-        overflow: hidden;
-        touch-action: none;
-      }
-      #game-container {
-        width: 100%;
-        height: 100%;
-      }
-      canvas {
-        display: block;
-        touch-action: none;
-      }
+      html, body, #root { height: 100%; margin: 0; background: #000; overflow: hidden; touch-action: none; }
     </style>
   </head>
   <body>
-    <div id="game-container"></div>
-    <script type="module" src="./src/App.jsx"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
