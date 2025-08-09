@@ -10,14 +10,14 @@ export default function App() {
     if (!gameRef.current) {
       initGame();
     }
-  }, []);
+  }, [containerRef]);
 
   const initGame = () => {
     const config = {
       type: Phaser.AUTO,
       width: window.innerWidth,
       height: window.innerHeight,
-      parent: "game-container",
+      parent: containerRef.current,
       backgroundColor: "#87ceeb",
       physics: {
         default: "arcade",
@@ -442,4 +442,12 @@ export default function App() {
       });
     }
   }
+    return (
+    <div
+      ref={containerRef}
+      id="game-container"
+      style="position:fixed;inset:0;width:100vw;height:100vh;touch-action:none;background:#000"
+    />
+  );
+}
 }
