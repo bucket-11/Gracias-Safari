@@ -34,16 +34,26 @@ export default function App() {
    *  ================
    */
   class Checkpoint1Scene extends Phaser.Scene {
-    constructor() { super("Checkpoint1Scene"); }
-    preload() {
-      this.load.image("bgSky", "https://i.ibb.co/0nK3yGW/mario-sky.png");
-      this.load.image("plane", "https://i.ibb.co/hgmnxKJ/mario-plane.png");
-      this.load.image("greenLand", "https://i.ibb.co/rcdD7yN/green-land.png");
-      this.load.image("beach", "https://i.ibb.co/b6y3nvV/mario-beach.png");
-      this.load.image("city", "https://i.ibb.co/6rGhP9g/mario-city.png");
-      this.load.image("desert", "https://i.ibb.co/LJ8Hbqg/mario-desert.png");
-      this.load.image("mountains", "https://i.ibb.co/pRJttdT/mario-mountains.png");
-    }
+  constructor(){ super("Checkpoint1Scene"); }
+  preload(){}
+  create(){
+    const W=this.scale.width,H=this.scale.height;
+    const g=this.add.graphics();
+    const grad=g.createGradient(0,0,0,H,[{color:0x60a5fa,pos:0},{color:0x93c5fd,pos:0.5},{color:0x1e293b,pos:1}]);
+    g.fillGradientStyle(grad); g.fillRect(0,0,W,H);
+    this.add.text(16,16,"Checkpoint 1 (test): tap green Safari", {fontSize:18,color:"#fff"});
+    const opts=[["Safari 🦒🐘",true],["Beach 🏝️",false],["City 🏙️",false],["Desert 🏜️",false],["Mountains 🏔️",false]];
+    const col=W/5;
+    opts.forEach((o,i)=>{
+      const x=col*(i+0.5), y=H*0.8;
+      const ok=o[1];
+      const btn=this.add.rectangle(x,y,col*0.9,52,0x111827,0.7).setStrokeStyle(2,0x334155).setInteractive({useHandCursor:true});
+      this.add.text(x,y,o[0],{fontSize:14,color:"#fff"}).setOrigin(0.5);
+      this.add.rectangle(x,y+30,col*0.86,6, ok?0x16a34a:0x3b82f6).setOrigin(0.5);
+      btn.on("pointerdown",()=> ok?this.scene.start("Checkpoint2Scene"):this.scene.restart());
+    });
+  }
+}
     create() {
       const W = this.scale.width, H = this.scale.height;
       this.add.image(W / 2, H / 2, "bgSky").setDisplaySize(W, H);
