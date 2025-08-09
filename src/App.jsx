@@ -33,21 +33,31 @@ export default function App() {
    *   CHECKPOINT 1
    *  ================
    */
-  class Checkpoint1Scene extends Phaser.Scene {
-  constructor(){ super("Checkpoint1Scene"); }
-  preload(){}
+  /** =================
+ *   CHECKPOINT 1 — asset-free test
+ *  ================
+ */
+class Checkpoint1Scene extends Phaser.Scene {
+  constructor() { super("Checkpoint1Scene"); }
+
+  preload() {}
+
   create(){
     const W=this.scale.width,H=this.scale.height;
     const g=this.add.graphics();
     const grad=g.createGradient(0,0,0,H,[{color:0x60a5fa,pos:0},{color:0x93c5fd,pos:0.5},{color:0x1e293b,pos:1}]);
     g.fillGradientStyle(grad); g.fillRect(0,0,W,H);
+
     this.add.text(16,16,"Checkpoint 1 (test): tap green Safari", {fontSize:18,color:"#fff"});
+
     const opts=[["Safari 🦒🐘",true],["Beach 🏝️",false],["City 🏙️",false],["Desert 🏜️",false],["Mountains 🏔️",false]];
     const col=W/5;
     opts.forEach((o,i)=>{
       const x=col*(i+0.5), y=H*0.8;
       const ok=o[1];
-      const btn=this.add.rectangle(x,y,col*0.9,52,0x111827,0.7).setStrokeStyle(2,0x334155).setInteractive({useHandCursor:true});
+      const btn=this.add.rectangle(x,y,col*0.9,52,0x111827,0.7)
+        .setStrokeStyle(2,0x334155)
+        .setInteractive({useHandCursor:true});
       this.add.text(x,y,o[0],{fontSize:14,color:"#fff"}).setOrigin(0.5);
       this.add.rectangle(x,y+30,col*0.86,6, ok?0x16a34a:0x3b82f6).setOrigin(0.5);
       btn.on("pointerdown",()=> ok?this.scene.start("Checkpoint2Scene"):this.scene.restart());
