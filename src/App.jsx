@@ -37,18 +37,23 @@ export default function App() {
  *   CHECKPOINT 1 — asset-free test
  *  ================
  */
-class Checkpoint1Scene extends Phaser.Scene {
-  constructor() { super("Checkpoint1Scene"); }
 
-  preload() {}
+    
+      class Checkpoint1Scene extends Phaser.Scene {
+  constructor(){ super("Checkpoint1Scene"); }
+  preload(){}
 
   create(){
     const W=this.scale.width,H=this.scale.height;
     const g=this.add.graphics();
-    const grad=g.createGradient(0,0,0,H,[{color:0x60a5fa,pos:0},{color:0x93c5fd,pos:0.5},{color:0x1e293b,pos:1}]);
+    const grad=g.createGradient(0,0,0,H,[
+      {color:0x60a5fa,pos:0},
+      {color:0x93c5fd,pos:0.5},
+      {color:0x1e293b,pos:1}
+    ]);
     g.fillGradientStyle(grad); g.fillRect(0,0,W,H);
 
-    this.add.text(16,16,"Checkpoint 1 (test): tap green Safari", {fontSize:18,color:"#fff"});
+    this.add.text(16,16,"Checkpoint 1 (test): tap green Safari",{fontSize:18,color:"#fff"});
 
     const opts=[["Safari 🦒🐘",true],["Beach 🏝️",false],["City 🏙️",false],["Desert 🏜️",false],["Mountains 🏔️",false]];
     const col=W/5;
